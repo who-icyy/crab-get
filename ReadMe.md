@@ -6,7 +6,6 @@ Crab Get is a command-line tool written in Rust, designed as a lightweight clone
 
 - **File Downloads**: Download files from HTTP and HTTPS URLs.
 - **Progress Bar**: Provides a visual indication of download progress.
-- **File Type Detection**: Automatically determines the file extension based on the URL.
 - **Custom Output Filename**: Specify the output filename if desired.
 
 ## Installation ⚙️
