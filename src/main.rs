@@ -1,27 +1,33 @@
 use clap::{Arg, Command};
+mod downloader;
 
 fn main() {
     // Define the command-line arguments using `clap`
     let matches = Command::new("Print URL CLI")
         .version("1.0")
-        .author("Your Name")
-        .about("Prints a URL from command-line input")
+        .author("@Who-icyy")
+        .about("A Simple WGET clone in RUST programming language.")
         .arg(
             Arg::new("url")
-                .help("The URL to print")
+                .help("File Url to download")
                 .required(true)
                 .index(1), // This means it's a positional argument
         )
+        .arg(
+            Arg::new("output")
+                .short('o')
+                .long("output")
+                .help("File Output Name")
+                .required(true)
+                .value_name("File Name"),
+        )
         .get_matches();
 
-    // Get the URL argument from the command-line input
     let url = matches.get_one::<String>("url").unwrap();
+    let o = matches.get_one::<String>("output").unwrap();
 
-    // Call the function to print the URL
-    print_url(url);
-}
-
-// Simple function that takes a URL and prints it
-fn print_url(url: &str) {
-    println!("The provided URL is: {}", url);
+    match downloader::download_file(url, o) {
+        Ok(()) => println!("File downloaded successfully to {}", o),
+        Err(e) => eprintln!("Error: {}", e),
+    }
 }
