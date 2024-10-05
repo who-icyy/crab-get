@@ -2,7 +2,6 @@ use clap::{Arg, Command};
 mod downloader;
 
 fn main() {
-    // Define the command-line arguments using `clap`
     let matches = Command::new("Print URL CLI")
         .version("1.0")
         .author("@Who-icyy")
@@ -11,7 +10,7 @@ fn main() {
             Arg::new("url")
                 .help("File Url to download")
                 .required(true)
-                .index(1), // This means it's a positional argument
+                .index(1),
         )
         .arg(
             Arg::new("output")
